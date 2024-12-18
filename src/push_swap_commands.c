@@ -45,5 +45,5 @@ void	ss(t_noeud **a, t_noeud **b, bool print)
 	swap(a);
 	swap(b);
 	if (!print)
-		ft_printf("sb\n");
+		ft_printf("ss\n");
 }

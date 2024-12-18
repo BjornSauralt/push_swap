@@ -26,6 +26,14 @@ static void	reverse_rotate(t_noeud **stack)
 	last->next->prev = last;
 }
 
+static void	reverse_rotate_both(t_noeud **a, t_noeud **b, t_noeud *cheapest)
+{
+	while (*b != cheapest->target_noeud && *a != cheapest)
+		rrr(a, b, false);
+	current_index(*a);
+	current_index(*b);
+}
+
 void	rra(t_noeud **a, bool print)
 {
 	reverse_rotate(a);

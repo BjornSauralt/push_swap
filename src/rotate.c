@@ -26,6 +26,14 @@ static void	rotate(t_noeud **stack)
 	last_noeud->next->next = NULL;
 }
 
+static void	rotate_both(t_noeud **a, t_noeud **b, t_noeud *cheapest)
+{
+	while (*b != cheapest->target_noeud && *a != cheapest)
+		rr(a, b, false);
+	current_index(*a);
+	current_index(*b);
+}
+
 void	ra(t_noeud **a, bool print)
 {
 	rotate(a);
