@@ -10,9 +10,7 @@ CFLAGS				= -Wall -Werror -Wextra -I
 RM					= rm -f
 
 #FICHIERS ICI FDP
-COMMANDS_DIR		=	$(SRC_DIR)commands/a_to_b.c \
-						$(SRC_DIR)commands/b_to_a.c \
-						$(SRC_DIR)commands/rotate.c \
+COMMANDS_DIR		=	$(SRC_DIR)commands/rotate.c \
 						$(SRC_DIR)commands/move.c \
 						$(SRC_DIR)commands/push_and_swap.c \
 						$(SRC_DIR)commands/push_swap_commands.c \
@@ -24,6 +22,7 @@ PUSH_SWAP_DIR		=	$(SRC_DIR)push_swap/init.c \
 						$(SRC_DIR)push_swap/utils.c \
 						$(SRC_DIR)push_swap/verif.c \
 						$(SRC_DIR)push_swap/split.c \
+						$(SRC_DIR)push_swap/set.c \
 
 SRCS 				= $(COMMANDS_DIR) $(PUSH_SWAP_DIR)
 

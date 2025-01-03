@@ -12,46 +12,49 @@
 
 #include "../../inc/push_swap.h"
 
-void	rotate(t_noeud **stack)
+static void	rotate(t_stack_node **stack)
 {
-	t_noeud	*last_noeud;
+	t_stack_node	*last_node;
 
 	if (!*stack || !(*stack)->next)
 		return ;
-	last_noeud = find_last(*stack);
-	last_noeud->next = *stack;
+	last_node = find_last(*stack); 
+	last_node->next = *stack;
 	*stack = (*stack)->next;
 	(*stack)->prev = NULL;
-	last_noeud->next->prev = last_noeud;
-	last_noeud->next->next = NULL;
-}
+	last_node->next->prev = last_node;
+	last_node->next->next = NULL;
+}		
 
-void	rotate_both(t_noeud **a, t_noeud **b, t_noeud *cheapest)
-{
-	while (*b != cheapest->target_noeud && *a != cheapest)
-		rr(a, b, false);
-	current_index(*a);
-	current_index(*b);
-}
-
-void	ra(t_noeud **a, bool print)
+void	ra(t_stack_node **a, bool print)
 {
 	rotate(a);
 	if (!print)
 		ft_printf("ra\n");
 }
 
-void	rb(t_noeud **b, bool print)
+void	rb(t_stack_node **b, bool print)
 {
 	rotate(b);
 	if (!print)
 		ft_printf("rb\n");
 }
 
-void	rr(t_noeud **a, t_noeud **b, bool print)
+void	rr(t_stack_node **a, t_stack_node **b, bool print)
 {
 	rotate(a);
 	rotate(b);
 	if (!print)
 		ft_printf("rr\n");
+}
+
+void	rotate_both(t_stack_node **a,
+						t_stack_node **b,
+						t_stack_node *cheapest_node)
+{
+	while (*b != cheapest_node->target_node
+		&& *a != cheapest_node)
+		rr(a, b, false);
+	current_index(*a);
+	current_index(*b);
 }

@@ -12,14 +12,14 @@
 
 #include "../../inc/push_swap.h"
 
-void	append_node(t_noeud **stack, int n)
+static void	append_node(t_stack_node **stack, int n)
 {
-	t_noeud	*node;
-	t_noeud	*last_node;
+	t_stack_node	*node;
+	t_stack_node	*last_node;
 
 	if (!stack)
 		return ;
-	node = malloc(sizeof(t_noeud));
+	node = malloc(sizeof(t_stack_node));
 	if (!node)
 		return ;
 	node->next = NULL;
@@ -38,7 +38,7 @@ void	append_node(t_noeud **stack, int n)
 	}
 }
 
-void	init_stack_a(t_noeud **a, char **argv)
+void	init_stack_a(t_stack_node **a, char **argv)
 {
 	long	n;
 	int		i;
@@ -52,13 +52,13 @@ void	init_stack_a(t_noeud **a, char **argv)
 		if (n > INT_MAX || n < INT_MIN)
 			free_errors(a);
 		if (error_duplicate(*a, (int)n))
-			free_errors(a);
+			free_errors(a); 
 		append_node(a, (int)n);
 		i++;
 	}
 }
 
-t_noeud	*get_cheapest(t_noeud *stack)
+t_stack_node	*get_cheapest(t_stack_node *stack)
 {
 	if (!stack)
 		return (NULL);
@@ -71,7 +71,9 @@ t_noeud	*get_cheapest(t_noeud *stack)
 	return (NULL);
 }
 
-void	prep_for_push(t_noeud **stack, t_noeud *top_node, char stack_name)
+void	prep_for_push(t_stack_node **stack,
+						t_stack_node *top_node,
+						char stack_name)
 {
 	while (*stack != top_node)
 	{
@@ -88,6 +90,22 @@ void	prep_for_push(t_noeud **stack, t_noeud *top_node, char stack_name)
 				rb(stack, false);
 			else
 				rrb(stack, false);
-		}
+		}	
 	}
+}
+
+void	init_nodes_a(t_stack_node *a, t_stack_node *b)
+{
+    current_index(a);
+    current_index(b);
+    set_target_a(a, b);
+    cost_analysis_a(a, b);
+    set_cheapest(a);
+}
+
+void	init_nodes_b(t_stack_node *a, t_stack_node *b)
+{
+    current_index(a);
+    current_index(b);
+    set_target_b(a, b);
 }

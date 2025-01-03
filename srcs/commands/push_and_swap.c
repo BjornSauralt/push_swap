@@ -12,39 +12,39 @@
 
 #include "../../inc/push_swap.h"
 
-void	swap(t_noeud **head)
+void	swap(t_stack_node **head)
 {
-	if (!head || !(*head)->next)
+	if (!*head || !(*head)->next)
 		return ;
 	*head = (*head)->next;
 	(*head)->prev->prev = *head;
-	(*head)->prev->prev = (*head)->next;
+	(*head)->prev->next = (*head)->next;
 	if ((*head)->next)
 		(*head)->next->prev = (*head)->prev;
 	(*head)->next = (*head)->prev;
 	(*head)->prev = NULL;
 }
 
-void	push(t_noeud **dst, t_noeud **src)
+void	push(t_stack_node **dst, t_stack_node **src)
 {
-	t_noeud	*push_noeud;
+	t_stack_node	*push_node;
 
 	if (!*src)
 		return ;
-	push_noeud = *src;
+	push_node = *src;
 	*src = (*src)->next;
 	if (*src)
 		(*src)->prev = NULL;
-	push_noeud->prev = NULL;
+	push_node->prev = NULL;
 	if (!*dst)
 	{
-		*dst = push_noeud;
-		push_noeud->next = NULL;
+		*dst = push_node;
+		push_node->next = NULL;
 	}
 	else
 	{
-		push_noeud->next = *dst;
-		push_noeud->next->prev = push_noeud;
-		*dst = push_noeud;
+		push_node->next = *dst;
+		push_node->next->prev = push_node;
+		*dst = push_node;
 	}
 }
