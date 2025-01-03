@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../inc/push_swap.h"
 
 void	tri_three(t_noeud **a)
 {

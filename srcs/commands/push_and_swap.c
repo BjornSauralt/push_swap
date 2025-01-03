@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../inc/push_swap.h"
 
-static void	swap(t_noeud **head)
+void	swap(t_noeud **head)
 {
 	if (!head || !(*head)->next)
 		return ;
@@ -25,7 +25,7 @@ static void	swap(t_noeud **head)
 	(*head)->prev = NULL;
 }
 
-static void	push(t_noeud **dst, t_noeud **src)
+void	push(t_noeud **dst, t_noeud **src)
 {
 	t_noeud	*push_noeud;
 

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../inc/push_swap.h"
 
 int	stack_len(t_noeud *stack)
 {
@@ -36,7 +36,7 @@ t_noeud	*find_last(t_noeud *stack)
 	return (stack);
 }
 
-bool	stack_sorted(t_noeud *stack)
+bool	pile_trie(t_noeud *stack)
 {
 	if (!stack)
 		return (1);

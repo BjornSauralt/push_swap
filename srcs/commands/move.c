@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../inc/push_swap.h"
 
-static void	move_a_to_b(t_noeud **a, t_noeud **b)
+void	move_a_to_b(t_noeud **a, t_noeud **b)
 {
 	t_noeud	*cheapest;
 
@@ -28,13 +28,13 @@ static void	move_a_to_b(t_noeud **a, t_noeud **b)
 	pb(b, a, false);
 }
 
-static void	move_b_to_a(t_noeud **a, t_noeud **b)
+void	move_b_to_a(t_noeud **a, t_noeud **b)
 {
 	prep_for_push(a, (*b)->target_noeud, 'a');
 	pa(a, b, false);
 }
 
-static void	min_on_top(t_noeud **a)
+void	min_on_top(t_noeud **a)
 {
 	while ((*a)->nbr != find_min(*a)->nbr)
 	{
@@ -56,13 +56,13 @@ void	tri_pile(t_noeud **a, t_noeud **b)
 		pb(b, a, false);
 	while (len_a-- > 3 && !pile_trie(*a))
 	{
-		init_nodes_a(*a, *b);
+		init_pile_a(*a, *b);
 		move_a_to_b(a, b);
 	}
 	tri_three(a);
 	while (*b)
 	{
-		init_nodes_b(*a, *b);
+		init_pile_b(*a, *b);
 		move_b_to_a(a, b);
 	}
 	current_index(*a);

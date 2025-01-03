@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../inc/push_swap.h"
 
-static void	set_target_b(t_noeud *a, t_noeud *b)
+void	set_target_b(t_noeud *a, t_noeud *b)
 {
 	t_noeud	*current_a;
 	t_noeud	*target_noeud;
@@ -39,7 +39,7 @@ static void	set_target_b(t_noeud *a, t_noeud *b)
 	}
 }
 
-void	init_nodes_b(t_noeud *a, t_noeud *b)
+void	init_pile_b(t_noeud *a, t_noeud *b)
 {
 	current_index(a);
 	current_index(b);

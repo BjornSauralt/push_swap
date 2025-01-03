@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../inc/push_swap.h"
 
-static void	rotate(t_noeud **stack)
+void	rotate(t_noeud **stack)
 {
 	t_noeud	*last_noeud;
 
@@ -26,7 +26,7 @@ static void	rotate(t_noeud **stack)
 	last_noeud->next->next = NULL;
 }
 
-static void	rotate_both(t_noeud **a, t_noeud **b, t_noeud *cheapest)
+void	rotate_both(t_noeud **a, t_noeud **b, t_noeud *cheapest)
 {
 	while (*b != cheapest->target_noeud && *a != cheapest)
 		rr(a, b, false);

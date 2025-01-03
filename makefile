@@ -1,64 +1,79 @@
+# Standard
 NAME				= push_swap
 
 # Directories
 LIBFT				= ./libft/libft.a
-INC					= ./include/
-SRC_DIR				= ./src/
-OBJ_DIR				= ./obj/
+INC					= inc/
+SRC_DIR				= srcs/
+OBJ_DIR				= obj/
 
 # Compiler and CFlags
 CC					= gcc
-CFLAGS				= -Wall -Werror -Wextra -I$(INC)
+CFLAGS				= -Wall -Werror -Wextra -I
 RM					= rm -f
 
 # Source Files
-PUSH_SWAP_FILE		=	swap_push_commands.c \
-                		a_to_b.c \
-                		b_to_a.c \
-                		init.c \
-                		main.c \
-                		move.c \
-                		push_and_swap.c \
-                		reverse_rotate.c \
-                		rotate.c \
-                		tri.c \
-                		utils.c \
-                		verif.c
+COMMANDS_DIR		=	$(SRC_DIR)commands/a_to_b.c \
+						$(SRC_DIR)commands/b_to_a.c \
+						$(SRC_DIR)commands/rotate.c \
+						$(SRC_DIR)commands/move.c \
+						$(SRC_DIR)commands/push_and_swap.c \
+						$(SRC_DIR)commands/push_swap_commands.c \
+						$(SRC_DIR)commands/reverse_rotate.c \
 
-# Full paths for source files and object files
-SRCS 				= $(addprefix $(SRC_DIR), $(PUSH_SWAP_FILE))
-OBJS 				= $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
+PUSH_SWAP_DIR		=	$(SRC_DIR)push_swap/init.c \
+						$(SRC_DIR)push_swap/main.c \
+						$(SRC_DIR)push_swap/tri.c \
+						$(SRC_DIR)push_swap/utils.c \
+						$(SRC_DIR)push_swap/verif.c \
+						$(SRC_DIR)push_swap/split.c \
+
+# Concatenate all source files
+SRCS 				= $(COMMANDS_DIR) $(PUSH_SWAP_DIR)
+
+# Apply the pattern substitution to each source file in SRC and produce a corresponding list of object files in the OBJ_DIR
+OBJ 				= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 
 # Build rules
-all: $(NAME)
+start:				
+					@make all
 
-# Link the final executable
-$(NAME): $(OBJS) $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
-	@echo "$(NAME) compiled successfully."
-
-# Rule to compile each .c file to its corresponding .o file
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "Compiled: $< -> $@"
-
-# Rule to build the libft library
 $(LIBFT):
-	@make -C ./libft
-	@echo "Libft compiled successfully."
+					@make -C ./libft
+
+all: 				$(NAME)
+
+$(NAME): 			$(OBJ) $(LIBFT)
+					@$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT) -o $(NAME)
+
+# Compile object files from source files
+$(OBJ_DIR)%.o:		$(SRC_DIR)%.c 
+					@mkdir -p $(@D)
+					@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:
-	@$(RM) -r $(OBJ_DIR)
-	@make clean -C ./libft
-	@echo "Cleaned object files."
+					@$(RM) -r $(OBJ_DIR)
+					@make clean -C ./libft
 
-fclean: clean
-	@$(RM) $(NAME)
-	@make fclean -C ./libft
-	@echo "Full clean completed."
+fclean: 			clean
+					@$(RM) $(NAME)
+					@$(RM) $(LIBFT)
 
-re: fclean all
+re: 				fclean all
 
-# Phony targets
-.PHONY: all clean fclean re
+# Phony targets represent actions not files
+.PHONY: 			start all clean fclean re
+
+
+		
+		
+		
+		
+		
+
+        
+        
+        
+        
+        
+		

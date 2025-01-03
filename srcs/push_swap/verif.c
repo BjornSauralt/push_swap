@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../inc/push_swap.h"
 
 int	error_syntax(char *str_n)
 {
@@ -40,7 +40,7 @@ int	error_duplicate(t_noeud *a, int n)
 	return (0);
 }
 
-void	free_stack(t_noeud **stack)
+void	free_pile(t_noeud **stack)
 {
 	t_noeud	*tmp;
 	t_noeud	*current;
@@ -60,7 +60,7 @@ void	free_stack(t_noeud **stack)
 
 void	free_errors(t_noeud **a)
 {
-	free_stack(a);
+	free_pile(a);
 	ft_printf("Error\n");
 	exit(1);
 }

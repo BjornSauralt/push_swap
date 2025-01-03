@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../inc/push_swap.h"
 
-static void	append_node(t_noeud **stack, int n)
+void	append_node(t_noeud **stack, int n)
 {
 	t_noeud	*node;
 	t_noeud	*last_node;

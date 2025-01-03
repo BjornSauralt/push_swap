@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../inc/push_swap.h"
 
 void	current_index(t_noeud *stack)
 {
@@ -30,7 +30,7 @@ void	current_index(t_noeud *stack)
 	}
 }
 
-static void	set_target_a(t_noeud *a, t_noeud *b)
+void	set_target_a(t_noeud *a, t_noeud *b)
 {
 	t_noeud	*current_b;
 	t_noeud	*target_node;
@@ -57,7 +57,7 @@ static void	set_target_a(t_noeud *a, t_noeud *b)
 	}
 }
 
-static void	cost_analysis_a(t_noeud *a, t_noeud *b)
+void	cost_analysis_a(t_noeud *a, t_noeud *b)
 {
 	int	len_a;
 	int	len_b;
@@ -97,7 +97,7 @@ void	set_cheapest(t_noeud *stack)
 	cheapest_node->cheapest = true;
 }
 
-void	init_nodes_a(t_noeud *a, t_noeud *b)
+void	init_pile_a(t_noeud *a, t_noeud *b)
 {
 	current_index(a);
 	current_index(b);
