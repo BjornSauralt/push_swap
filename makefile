@@ -21,8 +21,8 @@ PUSH_SWAP_DIR		=	$(SRC_DIR)push_swap/init.c \
 						$(SRC_DIR)push_swap/tri.c \
 						$(SRC_DIR)push_swap/utils.c \
 						$(SRC_DIR)push_swap/verif.c \
-						$(SRC_DIR)push_swap/split.c \
 						$(SRC_DIR)push_swap/set.c \
+						$(SRC_DIR)push_swap/ft_split.c \
 
 SRCS 				= $(COMMANDS_DIR) $(PUSH_SWAP_DIR)
 

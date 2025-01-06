@@ -12,7 +12,7 @@
 
 #include "../../inc/push_swap.h"
 
-void	current_index(t_stack_node *stack)
+void	current_index(t_noeud *stack)
 {
 	int	i;
 	int	median;
@@ -33,7 +33,7 @@ void	current_index(t_stack_node *stack)
 	}
 }
 
-void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
+void	cost_analysis_a(t_noeud *a, t_noeud *b)
 {
 	int	len_a;
 	int	len_b;
@@ -53,7 +53,7 @@ void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
 	}
 }
 
-void	sort_stacks(t_stack_node **a, t_stack_node **b)
+void	sort_stacks(t_noeud **a, t_noeud **b)
 {
 	int	len_a;
 
@@ -77,15 +77,28 @@ void	sort_stacks(t_stack_node **a, t_stack_node **b)
 	min_on_top(a);
 }
 
-void	sort_three(t_stack_node **a)
+void	sort_three(t_noeud **a)
 {
-    t_stack_node	*biggest_node;
+	t_noeud	*biggest_node;
 
-    biggest_node = find_max(*a);
+	biggest_node = find_max(*a);
 	if (biggest_node == *a)
 		ra(a, false);
 	else if ((*a)->next == biggest_node)
 		rra(a, false);
 	if ((*a)->nbr > (*a)->next->nbr)
 		sa(a, false);
+}
+
+t_noeud	*get_cheapest(t_noeud *stack)
+{
+	if (!stack)
+		return (NULL);
+	while (stack)
+	{
+		if (stack->cheapest)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
 }

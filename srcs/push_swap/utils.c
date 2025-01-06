@@ -12,11 +12,11 @@
 
 #include "../../inc/push_swap.h"
 
-int	stack_len(t_stack_node *stack)
+int	stack_len(t_noeud *stack)
 {
 	int	count;
 
-	if (!stack) 
+	if (!stack)
 		return (0);
 	count = 0;
 	while (stack)
@@ -27,7 +27,7 @@ int	stack_len(t_stack_node *stack)
 	return (count);
 }
 
-t_stack_node	*find_last(t_stack_node *stack)
+t_noeud	*find_last(t_noeud *stack)
 {
 	if (!stack)
 		return (NULL);
@@ -36,7 +36,7 @@ t_stack_node	*find_last(t_stack_node *stack)
 	return (stack);
 }
 
-bool	stack_sorted(t_stack_node *stack)
+bool	stack_sorted(t_noeud *stack)
 {
 	if (!stack)
 		return (1);
@@ -49,10 +49,10 @@ bool	stack_sorted(t_stack_node *stack)
 	return (true);
 }
 
-t_stack_node	*find_min(t_stack_node *stack)
+t_noeud	*find_min(t_noeud *stack)
 {
 	long			min;
-	t_stack_node	*min_node;
+	t_noeud			*min_node;
 
 	if (!stack)
 		return (NULL);
@@ -66,13 +66,13 @@ t_stack_node	*find_min(t_stack_node *stack)
 		}
 		stack = stack->next;
 	}
-	return (min_node); 
+	return (min_node);
 }
 
-t_stack_node	*find_max(t_stack_node *stack)
+t_noeud	*find_max(t_noeud *stack)
 {
 	long			max;
-	t_stack_node	*max_node;
+	t_noeud			*max_node;
 
 	if (!stack)
 		return (NULL);

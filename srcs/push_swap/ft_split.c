@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split.c                                            :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgarsaul <mgarsaul@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-01-03 15:24:46 by mgarsaul          #+#    #+#             */
-/*   Updated: 2025-01-03 15:24:46 by mgarsaul         ###   ########.fr       */
+/*   Created: 2024-10-17 10:10:17 by mgarsaul          #+#    #+#             */
+/*   Updated: 2024-10-17 10:10:17 by mgarsaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*get_next_word(char *s, char c)
 	return (next_word);
 }
 
-char	**split(char *s, char c)
+char	**ft_split(char *s, char c)
 {
 	int		words_count;
 	char	**result_array;
@@ -86,3 +86,32 @@ char	**split(char *s, char c)
 	result_array[i] = NULL;
 	return (result_array);
 }
+/*
+int	main(void)
+{
+	char	**result;
+	char	*str = "  tripouille  42  ";
+	char	delimiter = ' ';
+	int		i;
+
+	result = ft_split(str, delimiter);
+	if (!result)
+	{
+		printf("Erreur\n");
+		return (1);
+	}
+	i = 0;
+	while (result[i])
+	{
+		printf("%s\n", result[i]);
+		i++;
+	}
+	i = 0;
+	while (result[i])
+	{
+		free(result[i]);
+		i++;
+	}
+	free(result);
+	return (0);
+}*/

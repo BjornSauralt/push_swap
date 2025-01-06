@@ -12,35 +12,35 @@
 
 #include "../../inc/push_swap.h"
 
-void	pa(t_stack_node **a, t_stack_node **b, bool print)
+void	pa(t_noeud **a, t_noeud **b, bool print)
 {
-	push(a, b); 
-	if (!print) 
+	push(a, b);
+	if (!print)
 		ft_printf("pa\n");
 }
 
-void	pb(t_stack_node **b, t_stack_node **a, bool print)
+void	pb(t_noeud **b, t_noeud **a, bool print)
 {
 	push(b, a);
 	if (!print)
 		ft_printf("pb\n");
 }
 
-void	sa(t_stack_node	**a, bool print)
+void	sa(t_noeud	**a, bool print)
 {
 	swap(a);
 	if (!print)
 		ft_printf("sa\n");
 }
 
-void	sb(t_stack_node **b, bool print)
+void	sb(t_noeud **b, bool print)
 {
 	swap(b);
 	if (!print)
 		ft_printf("sb\n");
 }
 
-void	ss(t_stack_node **a, t_stack_node **b, bool print)
+void	ss(t_noeud **a, t_noeud **b, bool print)
 {
 	swap(a);
 	swap(b);

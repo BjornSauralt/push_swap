@@ -12,7 +12,7 @@
 
 #include "../../inc/push_swap.h"
 
-void	swap(t_stack_node **head)
+void	swap(t_noeud **head)
 {
 	if (!*head || !(*head)->next)
 		return ;
@@ -25,9 +25,9 @@ void	swap(t_stack_node **head)
 	(*head)->prev = NULL;
 }
 
-void	push(t_stack_node **dst, t_stack_node **src)
+void	push(t_noeud **dst, t_noeud **src)
 {
-	t_stack_node	*push_node;
+	t_noeud	*push_node;
 
 	if (!*src)
 		return ;

@@ -12,90 +12,79 @@
 
 #include "../includes/libft.h"
 
-static int	find_str(char const *s, char c)
+int	count_words(char *s, char c)
 {
-	int	i;
-	int	nb_str;
+	int		count;
+	bool	inside_word;
 
-	i = 0;
-	nb_str = 0;
-	if (!s[0])
-		return (0);
-	while (s[i] && s[i] == c)
-		i++;
-	while (s[i])
+	count = 0;
+	while (*s)
 	{
-		if (s[i] == c)
+		inside_word = false;
+		while (*s == c)
+			++s;
+		while (*s != c && *s)
 		{
-			nb_str++;
-			while (s[i] && s[i] == c)
-				i++;
-			continue ;
+			if (!inside_word)
+			{
+				++count;
+				inside_word = true;
+			}
+			++s;
 		}
-		i++;
 	}
-	if (s[i - 1] != c)
-		nb_str++;
-	return (nb_str);
+	return (count);
 }
 
-static void	get_next_str(char **next_str, size_t *next_strlen, char c)
+char	*get_next_word(char *s, char c)
 {
-	size_t	i;
+	static int	cursor = 0;
+	char		*next_word;
+	int			len;
+	int			i;
 
-	*next_str += *next_strlen;
-	*next_strlen = 0;
+	len = 0;
 	i = 0;
-	while (**next_str == c)
-		(*next_str)++;
-	while ((*next_str)[i])
-	{
-		if ((*next_str)[i] == c)
-			return ;
-		(*next_strlen)++;
-		i++;
-	}
+	while (s[cursor] == c)
+		++cursor;
+	while ((s[cursor + len] != c) && s[cursor + len])
+		++len;
+	next_word = malloc((size_t)len * sizeof(char) + 1);
+	if (!next_word)
+		return (NULL);
+	while ((s[cursor] != c) && s[cursor])
+		next_word[i++] = s[cursor++];
+	next_word[i] = '\0';
+	return (next_word);
 }
 
-static char	**malloc_err(char **tab)
+char	**ft_split(char *s, char c)
 {
-	int	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
-	return (NULL);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**tab;
-	char	*next_str;
-	size_t	next_strlen;
+	int		words_count;
+	char	**result_array;
 	int		i;
 
-	i = -1;
-	if (!s)
+	i = 0;
+	words_count = count_words(s, c);
+	if (!words_count)
+		exit(1);
+	result_array = malloc(sizeof(char *) * (size_t)(words_count + 2));
+	if (!result_array)
 		return (NULL);
-	tab = malloc(sizeof(char *) * (find_str(s, c) + 1));
-	if (!tab)
-		return (NULL);
-	next_str = (char *)s;
-	next_strlen = 0;
-	while (++i < find_str(s, c))
+	while (words_count-- >= 0)
 	{
-		get_next_str(&next_str, &next_strlen, c);
-		tab[i] = (char *)malloc(sizeof(char) * (next_strlen + 1));
-		if (!tab[i])
-			return (malloc_err(tab));
-		ft_strlcpy(tab[i], next_str, next_strlen + 1);
+		if (i == 0)
+		{
+			result_array[i] = malloc(sizeof(char));
+			if (!result_array[i])
+				return (NULL);
+			result_array[i++][0] = '\0';
+			continue ;
+		}
+		result_array[i++] = get_next_word(s, c);
 	}
-	tab[i] = NULL;
-	return (tab);
+	result_array[i] = NULL;
+	return (result_array);
 }
 /*
 int	main(void)
