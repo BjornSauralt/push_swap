@@ -12,47 +12,6 @@
 
 #include "../../inc/push_swap.h"
 
-void	current_index(t_noeud *stack)
-{
-	int	i;
-	int	median;
-
-	i = 0;
-	if (!stack)
-		return ;
-	median = stack_len(stack) / 2;
-	while (stack)
-	{
-		stack->index = i;
-		if (i <= median)
-			stack->above_median = true;
-		else
-			stack->above_median = false;
-		stack = stack->next;
-		++i;
-	}
-}
-
-void	cost_analysis_a(t_noeud *a, t_noeud *b)
-{
-	int	len_a;
-	int	len_b;
-
-	len_a = stack_len(a);
-	len_b = stack_len(b);
-	while (a)
-	{
-		a->push_cost = a->index;
-		if (!(a->above_median))
-			a->push_cost = len_a - (a->index);
-		if (a->target_node->above_median)
-			a->push_cost += a->target_node->index;
-		else
-			a->push_cost += len_b - (a->target_node->index);
-		a = a->next;
-	}
-}
-
 void	sort_stacks(t_noeud **a, t_noeud **b)
 {
 	int	len_a;
@@ -88,17 +47,4 @@ void	sort_three(t_noeud **a)
 		rra(a, false);
 	if ((*a)->nbr > (*a)->next->nbr)
 		sa(a, false);
-}
-
-t_noeud	*get_cheapest(t_noeud *stack)
-{
-	if (!stack)
-		return (NULL);
-	while (stack)
-	{
-		if (stack->cheapest)
-			return (stack);
-		stack = stack->next;
-	}
-	return (NULL);
 }

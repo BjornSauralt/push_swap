@@ -16,15 +16,16 @@ COMMANDS_DIR		=	$(SRC_DIR)commands/rotate.c \
 						$(SRC_DIR)commands/push_swap_commands.c \
 						$(SRC_DIR)commands/reverse_rotate.c \
 
-PUSH_SWAP_DIR		=	$(SRC_DIR)push_swap/init.c \
-						$(SRC_DIR)push_swap/main.c \
-						$(SRC_DIR)push_swap/tri.c \
-						$(SRC_DIR)push_swap/utils.c \
-						$(SRC_DIR)push_swap/verif.c \
-						$(SRC_DIR)push_swap/set.c \
-						$(SRC_DIR)push_swap/ft_split.c \
+ALGORITHM_DIR		=	$(SRC_DIR)algorithm/init.c \
+						$(SRC_DIR)algorithm/main.c \
+						$(SRC_DIR)algorithm/tri.c \
+						$(SRC_DIR)algorithm/utils.c \
+						$(SRC_DIR)algorithm/free_error.c \
+						$(SRC_DIR)algorithm/set.c \
+						$(SRC_DIR)algorithm/ft_split.c \
+						$(SRC_DIR)algorithm/init_add.c \
 
-SRCS 				= $(COMMANDS_DIR) $(PUSH_SWAP_DIR)
+SRCS 				= $(COMMANDS_DIR) $(ALGORITHM_DIR)
 
 OBJ 				= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 

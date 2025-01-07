@@ -38,6 +38,26 @@ static void	append_node(t_noeud **stack, int n)
 	}
 }
 
+void	cost_analysis_a(t_noeud *a, t_noeud *b)
+{
+	int	len_a;
+	int	len_b;
+
+	len_a = stack_len(a);
+	len_b = stack_len(b);
+	while (a)
+	{
+		a->push_cost = a->index;
+		if (!(a->above_median))
+			a->push_cost = len_a - (a->index);
+		if (a->target_node->above_median)
+			a->push_cost += a->target_node->index;
+		else
+			a->push_cost += len_b - (a->target_node->index);
+		a = a->next;
+	}
+}
+
 void	init_stack_a(t_noeud **a, char **argv)
 {
 	long	n;
@@ -58,24 +78,24 @@ void	init_stack_a(t_noeud **a, char **argv)
 	}
 }
 
-void	prep_for_push(t_noeud **stack, t_noeud *top_node, char stack_name)
+void	current_index(t_noeud *stack)
 {
-	while (*stack != top_node)
+	int	i;
+	int	median;
+
+	i = 0;
+	if (!stack)
+		return ;
+	median = stack_len(stack) / 2;
+	while (stack)
 	{
-		if (stack_name == 'a')
-		{
-			if (top_node->above_median)
-				ra(stack, false);
-			else
-				rra(stack, false);
-		}
-		else if (stack_name == 'b')
-		{
-			if (top_node->above_median)
-				rb(stack, false);
-			else
-				rrb(stack, false);
-		}
+		stack->index = i;
+		if (i <= median)
+			stack->above_median = true;
+		else
+			stack->above_median = false;
+		stack = stack->next;
+		++i;
 	}
 }
 
