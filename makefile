@@ -11,7 +11,6 @@ RM					= rm -f
 
 #FICHIERS ICI FDP
 COMMANDS_DIR		=	$(SRC_DIR)commands/rotate.c \
-						$(SRC_DIR)commands/move.c \
 						$(SRC_DIR)commands/push_and_swap.c \
 						$(SRC_DIR)commands/push_swap_commands.c \
 						$(SRC_DIR)commands/reverse_rotate.c \
@@ -24,6 +23,7 @@ ALGORITHM_DIR		=	$(SRC_DIR)algorithm/init.c \
 						$(SRC_DIR)algorithm/set.c \
 						$(SRC_DIR)algorithm/ft_split.c \
 						$(SRC_DIR)algorithm/init_add.c \
+						$(SRC_DIR)algorithm/move.c \
 
 SRCS 				= $(COMMANDS_DIR) $(ALGORITHM_DIR)
 

@@ -75,5 +75,6 @@ void		set_target_b(t_noeud *a, t_noeud *b);
 void		cost_analysis_a(t_noeud *a, t_noeud *b);
 void		move_b_to_a(t_noeud **a, t_noeud **b);
 void		min_on_top(t_noeud **a);
+void	append_node(t_noeud **stack, int n);
 
 #endif
