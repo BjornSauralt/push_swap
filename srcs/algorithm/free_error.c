@@ -67,3 +67,16 @@ void	free_errors(t_noeud **a)
 	ft_printf("Error\n");
 	exit(1);
 }
+
+void	free_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}

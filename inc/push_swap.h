@@ -31,6 +31,7 @@ int			error_syntax(char *str_n);
 int			error_duplicate(t_noeud *a, int n);
 void		free_stack(t_noeud **stack);
 void		free_errors(t_noeud **a);
+void		free_split(char **split);
 
 void		init_stack_a(t_noeud **a, char **argv);
 char		**ft_split(char *s, char c);
@@ -75,6 +76,6 @@ void		set_target_b(t_noeud *a, t_noeud *b);
 void		cost_analysis_a(t_noeud *a, t_noeud *b);
 void		move_b_to_a(t_noeud **a, t_noeud **b);
 void		min_on_top(t_noeud **a);
-void	append_node(t_noeud **stack, int n);
+void		append_node(t_noeud **stack, int n);
 
 #endif
