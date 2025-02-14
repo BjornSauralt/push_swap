@@ -30,10 +30,10 @@ typedef struct t_noeud
 int			error_syntax(char *str_n);
 int			error_duplicate(t_noeud *a, int n);
 void		free_stack(t_noeud **stack);
-void		free_errors(t_noeud **a);
+void		free_errors(t_noeud **a, char ***split_argv);
 void		free_split(char **split);
 
-void		init_stack_a(t_noeud **a, char **argv);
+void		init_stack_a(t_noeud **a, char **argv, char ***split_argv);
 char		**ft_split(char *s, char c);
 
 void		init_nodes_a(t_noeud *a, t_noeud *b);

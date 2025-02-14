@@ -61,9 +61,18 @@ void	free_stack(t_noeud **stack)
 	*stack = NULL;
 }
 
-void	free_errors(t_noeud **a)
+void	free_errors(t_noeud **a, char ***split_argv)
 {
+	int	i;
+
 	free_stack(a);
+	if (split_argv && *split_argv)
+	{
+		i = 0;
+		while ((*split_argv)[i])
+			free((*split_argv)[i++]);
+		free(*split_argv);
+	}
 	ft_printf("Error\n");
 	exit(1);
 }

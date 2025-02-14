@@ -12,7 +12,7 @@
 
 #include "../../inc/push_swap.h"
 
-void	init_stack_a(t_noeud **a, char **argv)
+void	init_stack_a(t_noeud **a, char **argv, char ***split_argv)
 {
 	long	n;
 	int		i;
@@ -21,12 +21,12 @@ void	init_stack_a(t_noeud **a, char **argv)
 	while (argv[i])
 	{
 		if (error_syntax(argv[i]))
-			free_errors(a);
+			free_errors(a, split_argv);
 		n = ft_atoi(argv[i]);
 		if (n > INT_MAX || n < INT_MIN)
-			free_errors(a);
+			free_errors(a, split_argv);
 		if (error_duplicate(*a, (int)n))
-			free_errors(a);
+			free_errors(a, split_argv);
 		append_node(a, (int)n);
 		i++;
 	}

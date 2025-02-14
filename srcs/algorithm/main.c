@@ -21,7 +21,7 @@ void	initialize_stacks(int argc, char **argv,
 		*split_argv = ft_split(argv[1], ' ');
 		argv = *split_argv;
 	}
-	init_stack_a(a, argv + 1);
+	init_stack_a(a, argv + 1, split_argv);
 }
 
 void	sort_stacks_if_needed(t_noeud **a, t_noeud **b)
